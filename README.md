@@ -9,7 +9,7 @@ In this image there is the following CSS Code in the text input:
 border-radius: 30px;
 border-width: 0`
 
-So, the app generates a shape with that styles under the text input which you can download it in your computer by pressing the "Download as PNG" button
+So, then, when you press the "Apply CSS" button, the app generates a shape with that styles under the text input which you can download it in your computer by pressing the "Download as PNG" button
 
 # Free & open-source
 I did this simple website because I need that functionality in a project, but it's totally free and you can you can do whatever you want with this repo.
