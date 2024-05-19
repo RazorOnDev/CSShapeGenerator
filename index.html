@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Shape Generator</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f3f3f3;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+    header {
+        background-color: transparent;
+        color: #fff;
+        text-align: center;
+        padding: 20px 0;
+        margin-bottom: 1%;
+    }
+    #container {
+        width: 40%;
+        max-width: 200px;
+        min-height: 100px;
+        aspect-ratio: 1;
+        border: 2px solid #333;
+        margin: 50px auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #fff;
+    }
+    textarea {
+        width: 90%;
+        max-width: 600px;
+        margin: 10px auto;
+        display: block;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    button {
+        background-color: #333;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 10px 0;
+    }
+    button:hover {
+        background-color: #555;
+    }
+    .post-it {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        background-color: #ffd700;
+        color: #333;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    }
+    .button {
+        align-self: center;
+    }
+</style>
+</head>
+<body>
+    <header>
+        <h1>CSS Shape Generator</h1>
+    </header>
+    <div class="post-it">
+        <p>Welcome to the CSS Shape Generator! Enter your CSS code in the textarea below and click "Apply CSS" to see the shape. You can also download the generated shape as a PNG image.</p>
+    </div>
+    <textarea id="cssInput" placeholder="Enter your CSS Code here" cols="50" rows="5"></textarea>
+    <button id="button" onclick="applyCSS()">Apply CSS</button>
+    <div id="container"></div>
+    <button id="button" onclick="downloadPNG()">Download as PNG</button>
+
+    <script>
+        function applyCSS() {
+            var cssCode = document.getElementById('cssInput').value;
+            var container = document.getElementById('container');
+            container.style.cssText = cssCode;
+        }
+
+        function downloadPNG() {
+            html2canvas(document.getElementById('container'), {
+                backgroundColor: null // Set background to transparent
+            }).then(function(canvas) {
+                var link = document.createElement('a');
+                link.download = 'generated_shape.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            });
+        }
+    </script>
+
+    <!-- External library for converting HTML to Canvas -->
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+</body>
+</html>
